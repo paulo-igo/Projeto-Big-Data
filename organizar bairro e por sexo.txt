@@ -1,0 +1,15 @@
+import pandas as pd
+
+df = pd.read_excel('doadores 23-25.ods')
+
+total_doadores = len(df)
+print(f"Total de doadores: {total_doadores}")
+
+df['bairro'] = df['bairro'].astype(str).apply(lambda x: x.upper().strip())
+
+qtd_bairros = len(df['bairro'].unique())
+print(f"Bairros únicos: {qtd_bairros}")
+
+resumo = df.groupby(['grupoabo', 'sexo']).size()
+
+print(resumo)

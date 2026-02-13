@@ -1,0 +1,23 @@
+import pandas as pd
+
+dados = {
+    'registro': [101, 102, 103],
+    'doador': ['João Silva', 'Maria Santos', 'Pedro Souza'],
+    'sexo': ['M', 'F', 'M'],
+    'dtreg': ['2023-01-15', '2023-02-20', '2023-03-10'],
+    'grupoabo': ['A', 'O', 'B'],
+    'RH': ['+', '-', '+'],
+    'bairro': ['centro', 'jardim américa', 'bueno']
+}
+
+df = pd.DataFrame(dados)
+
+print(df)
+print("\n")
+
+df_organizado = df.drop(['doador', 'registro'], axis=1)
+
+df_organizado['bairro'] = df_organizado['bairro'].apply(lambda x: x.upper())
+
+print("--- Tabela Organizada (Sem colunas e com Bairro arrumado) ---")
+print(df_organizado)
